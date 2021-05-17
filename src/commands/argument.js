@@ -178,8 +178,8 @@ class Argument {
 			}
 
 			// Prompt the user for a new value
-			prompts.push(await msg.embed({ color: '#2F3136', description: stripIndents`
-				**${empty ? this.prompt : valid ? valid : `You provided an invalid ${this.label}. Please try again.`}**
+			prompts.push(await msg.embed({ color: 'BLUE', description: stripIndents`
+				**${empty ? this.prompt : valid ? valid : `<:Zayn_salah:841625444594876417> You provided an invalid ${this.label}. Please try again.`}**
 
 				${oneLine`
 					Type \`cancel\` to cancel the command.
@@ -264,9 +264,9 @@ class Argument {
 				// Prompt the user for a new value
 				if(val) {
 					const escaped = escapeMarkdown(val).replace(/@/g, '@\u200b');
-					prompts.push(await msg.embed({ color: '#2F3136', description: stripIndents`
+					prompts.push(await msg.embed({ color: 'BLUE', description: stripIndents`
 						${valid ? valid : oneLine`
-							**You provided an invalid ${this.label},
+							**<:Zayn_salah:841625444594876417> You provided an invalid ${this.label},
 							"${escaped.length < 1850 ? escaped : '[too long to show]'}".
 							Please try again.**
 						`}
@@ -277,7 +277,7 @@ class Argument {
 						`}
 					` }));
 				} else if(results.length === 0) {
-					prompts.push(await msg.embed({ color: '#2F3136', description: stripIndents`
+					prompts.push(await msg.embed({ color: 'BLUE', description: stripIndents`
 						**${this.prompt}**
 
 						${oneLine`
