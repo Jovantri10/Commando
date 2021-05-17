@@ -179,10 +179,10 @@ class Argument {
 
 			// Prompt the user for a new value
 			prompts.push(await msg.embed({ color: 'RED', description: stripIndents`
-				${empty ? this.prompt : valid ? valid : `<:Zayn_salah:841625444594876417>・You provided an invalid **${this.label}**\n- **\`\`\`Type the right ${this.label} before 30 seconds\`\`\`**\n- **\`\`\`Type cancel to cancel this command`}\`\`\`**
+				${empty ? this.prompt : valid ? valid : oneLine`<a:warn:840519859339395133>・You provided an invalid **${this.label}**・<a:warn:840519859339395133>\n\n<:Zayn_right:841887554857074728>・*__Type the right ${this.label} before 30 seconds__*\n<:Zayn_right:841887554857074728>・*__Type cancel to cancel this command`}__*
 
 				${oneLine`
-					<a:warn:840519859339395133>・Type \`cancel\` to cancel the command.
+					Type \`cancel\` to cancel the command.
 					${wait ? `Im waiting on ${this.wait} seconds.` : ''}
 				`}
 			` }));
@@ -265,14 +265,13 @@ class Argument {
 				if(val) {
 					const escaped = escapeMarkdown(val).replace(/@/g, '@\u200b');
 					prompts.push(await msg.embed({ color: 'RED', description: stripIndents`
-						${valid ? valid : oneLine`
-							<:Zayn_salah:841625444594876417>・You provided an invalid **${this.label}**\n- **\`\`\`Type the right ${this.label} before 30 seconds\`\`\`**\n- **\`\`\`Type cancel to cancel this command\`\`\`**,
+						${valid ? valid : oneLine`<a:warn:840519859339395133>・You provided an invalid **${this.label}**・<a:warn:840519859339395133>\n\n<:Zayn_right:841887554857074728>・*__Type the right ${this.label} before 30 seconds__*\n<:Zayn_right:841887554857074728>・*__Type cancel to cancel this command__*,
 							"${escaped.length < 1850 ? escaped : '[too long to show]'}".
 							
 						`}
 
 						${oneLine`
-							<a:warn:840519859339395133>・Type \`cancel\` to cancel the command, or \`finish\` to finish entry up to this point.
+							Type \`cancel\` to cancel the command, or \`finish\` to finish entry up to this point.
 							${wait ? `Im waiting on ${this.wait} seconds.` : ''}
 						`}
 					` }));
