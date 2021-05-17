@@ -179,7 +179,7 @@ class Argument {
 
 			// Prompt the user for a new value
 			prompts.push(await msg.embed({ color: 'RED', description: stripIndents`
-				${empty ? this.prompt : valid ? valid : oneLine`<a:warn:840519859339395133>・You provided an invalid **${this.label}**・<a:warn:840519859339395133>\n\n<:Zayn_right:841887554857074728>・*__Type the right ${this.label} before 30 seconds__*\n<:Zayn_right:841887554857074728>・*__Type cancel to cancel this command__*`}
+				${empty ? this.prompt : valid ? valid : `<a:warn:840519859339395133>・You provided an invalid **${this.label}**・<a:warn:840519859339395133>\n\n<:Zayn_right:841887554857074728>・*__Type the right ${this.label} before 30 seconds__*\n<:Zayn_right:841887554857074728>・*__Type cancel to cancel this command__*`}
 
 				${oneLine`
 					Type \`cancel\` to cancel the command.
@@ -265,7 +265,7 @@ class Argument {
 				if(val) {
 					const escaped = escapeMarkdown(val).replace(/@/g, '@\u200b');
 					prompts.push(await msg.embed({ color: 'RED', description: stripIndents`
-						${valid ? valid : oneLine`<a:warn:840519859339395133>・You provided an invalid **${this.label}**・<a:warn:840519859339395133>\n\n<:Zayn_right:841887554857074728>・*__Type the right ${this.label} before 30 seconds__*\n<:Zayn_right:841887554857074728>・*__Type cancel to cancel this command__*,
+						${valid ? valid : `<a:warn:840519859339395133>・You provided an invalid **${this.label}**・<a:warn:840519859339395133>\n\n<:Zayn_right:841887554857074728>・*__Type the right ${this.label} before 30 seconds__*\n<:Zayn_right:841887554857074728>・*__Type cancel to cancel this command__*,
 							"${escaped.length < 1850 ? escaped : '[too long to show]'}".
 							
 						`}
