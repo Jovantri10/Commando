@@ -178,14 +178,14 @@ class Argument {
 			}
 
 			// Prompt the user for a new value
-			prompts.push(await msg.inlineReply(msg.embed({ color: 'BLUE', description: stripIndents`
-				${empty ? this.prompt : valid ? valid : `<:Zayn_salah:841625444594876417>・You provided an invalid **${this.label}**\n・*__Type the right ${this.label} before 30 seconds__*\n・*__Type cancel to cancel this command`}__*
+			prompts.push(await msg.embed({ color: 'RED', description: stripIndents`
+				${empty ? this.prompt : valid ? valid : `<:Zayn_salah:841625444594876417>・You provided an invalid **${this.label}**\n- **\`\`\`Type the right ${this.label} before 30 seconds\`\`\`**\n- **\`\`\`Type cancel to cancel this command`}\`\`\`**
 
 				${oneLine`
-					<a:warn:840519859339395133> Type \`cancel\` to cancel the command.
+					<a:warn:840519859339395133>・Type \`cancel\` to cancel the command.
 					${wait ? `Im waiting on ${this.wait} seconds.` : ''}
 				`}
-			` })));
+			` }));
 
 			// Get the user's response
 			const responses = await msg.channel.awaitMessages(msg2 => msg2.author.id === msg.author.id, {
@@ -264,18 +264,19 @@ class Argument {
 				// Prompt the user for a new value
 				if(val) {
 					const escaped = escapeMarkdown(val).replace(/@/g, '@\u200b');
-					prompts.push(await msg.inlineReply(msg.embed({ color: 'BLUE', description: stripIndents`
+					prompts.push(await msg.embed({ color: 'RED', description: stripIndents`
 						${valid ? valid : oneLine`
-							<:Zayn_salah:841625444594876417>・You provided an invalid **${this.label}**\n・*__Type the right ${this.label} before 30 seconds__*\n・*__Type cancel to cancel this command__*,
+							<:Zayn_salah:841625444594876417>・You provided an invalid **${this.label}**\n- **\`\`\`Type the right ${this.label} before 30 seconds\`\`\`**\n- **\`\`\`Type cancel to cancel this command\`\`\`**,
 							"${escaped.length < 1850 ? escaped : '[too long to show]'}".
 							
 						`}
 
 						${oneLine`
-							<a:warn:840519859339395133> Type \`cancel\` to cancel the command, or \`finish\` to finish entry up to this point.
+							<a:warn:840519859339395133>・Type \`cancel\` to cancel the command, or \`finish\` to finish entry up to this point.
 							${wait ? `Im waiting on ${this.wait} seconds.` : ''}
 						`}
-					` })));
+					` }));
+					
 				} else if(results.length === 0) {
 					prompts.push(await msg.embed({ color: 'BLUE', description: stripIndents`
 						**${this.prompt}**
