@@ -349,12 +349,7 @@ class Command {
 			return `${or}${escapeMarkdown(usr.username)}#${usr.discriminator}`;
 		}).join(owners.length > 2 ? ', ' : ' ') : '';
 		const invite = this.client.options.invite;
-		return message.reply(stripIndents`**ERROR**
-		Upss, i got an error while running the command
-		**${err.name}: ${err.message}**
-		This is developer fault :(
-		Please Contact ${ownerList || 'the bot owner'}${invite ? ` in this server: ${invite}` : '.'}
-		`);
+		
 	}
 
 	/**
