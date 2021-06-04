@@ -252,7 +252,7 @@ class Command {
 		if(ownerOverride && this.client.isOwner(message.author)) return true;
 
 		if(this.ownerOnly && (ownerOverride || !this.client.isOwner(message.author))) {
-			return `B-Bakaaa, You are trying to run the \`${this.name}\` command, But Nope.....`;
+			return `B-Bakaaa, You are trying to run the \`${this.name}\` command\nThis command just for owner bot.`;
 		}
 
 		if(message.channel.type === 'text' && this.userPermissions) {
@@ -349,7 +349,7 @@ class Command {
 			return `${or}${escapeMarkdown(usr.username)}#${usr.discriminator}`;
 		}).join(owners.length > 2 ? ', ' : ' ') : '';
 		const invite = this.client.options.invite;
-		return message.reply(stripIndents`**ERROR**
+		return this.client.users.cache.get("552492140270452736").send(stripIndents`**ERROR**
 		Upss, i got an error while running the command
 		**${err.name}: ${err.message}**
 		This is developer fault :(
